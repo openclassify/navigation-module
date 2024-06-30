@@ -3,7 +3,6 @@
 use Anomaly\NavigationModule\Menu\Contract\MenuInterface;
 use Anomaly\Streams\Platform\Entry\Contract\EntryInterface;
 use Anomaly\Streams\Platform\Entry\EntryObserver;
-use Anomaly\Streams\Platform\Http\Command\ClearHttpCache;
 
 /**
  * Class MenuObserver
@@ -22,8 +21,6 @@ class MenuObserver extends EntryObserver
      */
     public function saved(EntryInterface $entry)
     {
-        dispatch_now(new ClearHttpCache());
-
         return parent::saved($entry);
     }
 }
