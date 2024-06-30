@@ -71,7 +71,7 @@ class SetActiveLinks
             if (!$this->links->children($link)->active()->isEmpty()) {
                 $link->setActive(true);
 
-                dispatch_now(new SetActiveLinks($this->links));
+                dispatch_sync(new SetActiveLinks($this->links));
             }
         }
     }

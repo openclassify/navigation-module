@@ -42,10 +42,10 @@ class RenderNavigation
      */
     public function handle(Factory $view)
     {
-        dispatch_now(new HandlePresets($this->options));
+        dispatch_sync(new HandlePresets($this->options));
 
-        $menu  = dispatch_now(new GetMenu($this->options->get('menu')));
-        $links = dispatch_now(new GetLinks($this->options, $menu));
+        $menu  = dispatch_sync(new GetMenu($this->options->get('menu')));
+        $links = dispatch_sync(new GetLinks($this->options, $menu));
 
         return $view->make(
             $this->options->get('view', 'anomaly.module.navigation::links'),

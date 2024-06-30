@@ -31,7 +31,7 @@ class NavigationModulePlugin extends Plugin
                     return (new NavigationModuleCriteria(
                         'render',
                         function (Collection $options) use ($menu) {
-                            return dispatch_now(new RenderNavigation($options->put('menu', $menu)));
+                            return dispatch_sync(new RenderNavigation($options->put('menu', $menu)));
                         }
                     ))
                         ->setModel(MenuModel::class)
@@ -48,7 +48,7 @@ class NavigationModulePlugin extends Plugin
                         'get',
                         function (Collection $options) use ($menu) {
                             return decorate(
-                                dispatch_now(new GetLinks($options->put('menu', $menu)))
+                                dispatch_sync(new GetLinks($options->put('menu', $menu)))
                             );
                         }
                     ))
