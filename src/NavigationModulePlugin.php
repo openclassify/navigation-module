@@ -25,7 +25,7 @@ class NavigationModulePlugin extends Plugin
     public function getFunctions()
     {
         return [
-            new \Twig_SimpleFunction(
+            new \Twig\TwigFunction(
                 'menu',
                 function ($menu = null) {
                     return (new NavigationModuleCriteria(
@@ -41,7 +41,7 @@ class NavigationModulePlugin extends Plugin
                     'is_safe' => ['html'],
                 ]
             ),
-            new \Twig_SimpleFunction(
+            new \Twig\TwigFunction(
                 'links',
                 function ($menu = null) {
                     return (new NavigationModuleCriteria(
